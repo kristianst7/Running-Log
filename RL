@@ -1,0 +1,72 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <rect width="64" height="64" rx="12" fill="#22d3ee"/>
+  <text x="50%" y="55%" text-anchor="middle" font-family="Arial" font-size="28" font-weight="900" fill="#000">RL</text>
+</svg>
+document.addEventListener('DOMContentLoaded',()=>{
+  document.getElementById('year').textContent = new Date().getFullYear();
+  console.log("RunLog app loaded");
+});
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>RunLog — Personal Running Log</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<header class="site-header">
+  <div class="container nav">
+    <a class="brand" href="#"><span class="logo">RL</span> RunLog</a>
+    <nav>
+      <ul class="menu">
+        <li><button class="tab-btn" data-tab="calendar" aria-selected="true">Calendar</button></li>
+        <li><button class="tab-btn" data-tab="list">List</button></li>
+        <li><button class="tab-btn" data-tab="stats">Stats</button></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main id="main" class="container">
+  <section id="tab-calendar" class="tab show">
+    <h2>Calendar</h2>
+    <div id="calendarGrid" class="calendar"></div>
+  </section>
+
+  <section id="tab-list" class="tab">
+    <h2>Run List</h2>
+    <table class="runs-table" id="runsTable">
+      <thead>
+        <tr><th>Date</th><th>Type</th><th>Distance</th><th>Time</th><th>Pace</th></tr>
+      </thead>
+      <tbody id="runsTbody"></tbody>
+    </table>
+  </section>
+
+  <section id="tab-stats" class="tab">
+    <h2>Stats</h2>
+    <p id="statsSummary">No runs logged yet.</p>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <p>© <span id="year"></span> RunLog</p>
+  </div>
+</footer>
+
+<script src="app.js"></script>
+</body>
+</html>
+body{background:#0b1020;color:#e5e7eb;font-family:sans-serif;margin:0;padding:0}
+.container{width:min(1000px,92%);margin:0 auto}
+.site-header{background:#0f172a;padding:1rem}
+.logo{background:#22d3ee;color:#000;padding:.2rem .5rem;border-radius:.3rem;font-weight:bold}
+.menu{list-style:none;display:flex;gap:.5rem;padding:0;margin:0}
+.menu button{background:#111827;color:#e5e7eb;border:1px solid #333;padding:.3rem .6rem;border-radius:.3rem}
+.tab{display:none;padding:1rem 0}.tab.show{display:block}
+.calendar{display:grid;grid-template-columns:repeat(7,1fr);gap:.3rem;margin-top:.5rem}
+.day{background:#111827;padding:.4rem;border-radius:.3rem;min-height:60px}
+.runs-table{width:100%;border-collapse:collapse}
+.runs-table th,.runs-table td{border-bottom:1px solid #333;padding:.4rem;text-align:left}
